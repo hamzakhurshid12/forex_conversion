@@ -1,3 +1,3 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+Released initial version with features for lisiting all currency prices and converting money between different currencies.

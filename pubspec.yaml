@@ -1,7 +1,7 @@
 name: forex_conversion
-description: A Flutter Package for real-time forex conversions.
+description: A Flutter Package for real-time forex prices and conversions.
 version: 0.0.1
-homepage:
+repository: https://github.com/hamzakhurshid12/forex_conversion
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
