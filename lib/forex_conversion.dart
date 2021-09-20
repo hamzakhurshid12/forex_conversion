@@ -45,7 +45,7 @@ class Forex {
     return result;
   }
 
-   /// returns a list of all supported currencies.
+  /// returns a list of all supported currencies.
   Future<List<String>> getAvailableCurrencies() async {
     if (_rates == null) {
       await _fetchCurrencies();
