@@ -7,3 +7,7 @@ Released initial version with features for lisiting all currency prices and conv
  - Fixed installing instructions in Readme.md.
  - Added documentation for public methods.
  - Formatted all Dart files.
+
+## 0.0.3
+
+ - Reformatted forex_conversion.dart
