@@ -8,7 +8,7 @@ A Flutter package to quickly fetch Forex prices and perform currency cinversions
 ## Getting started
 
 ```dart
-import 'package:forex_conversion';
+import 'package:forex_conversion/forex_conversion.dart';
 ```
 
 ## Usage
