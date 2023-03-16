@@ -15,17 +15,20 @@ class Forex {
   }
 
   Future<void> _fetchCurrencies() async {
-    Uri baseUri = Uri.parse('http://www.convertmymoney.com/rates.json');
+    final Uri baseUri = Uri.parse('http://www.convertmymoney.com/rates.json');
     final response = await http.get(baseUri);
-    Map<String, dynamic> jsonResponse =
+    final Map<String, dynamic> jsonResponse =
         json.decode(response.body) as Map<String, dynamic>;
     _rates = jsonResponse.remove("rates") as Map<String, dynamic>;
     _keys = _rates.keys.toList();
   }
 
   /// converts amount from one currency into another using current forex prices.
-  Future<double> getCurrencyConverted(String sourceCurrency,
-      String destinationCurrency, double sourceAmount) async {
+  Future<double> getCurrencyConverted({
+    String sourceCurrency = 'USD',
+    String destinationCurrency = 'BRL',
+    double sourceAmount = 1,
+  }) async {
     await _checkCurrenciesList();
     if (!_keys.contains(sourceCurrency)) {
       throw Exception(
@@ -36,16 +39,15 @@ class Forex {
           "Destination Currency provided is invalid. Please Use ISO-4217 currency codes only.");
     }
 
-    final totalDollarsOfSourceCurrency = sourceAmount / _rates[sourceCurrency];
-    final totalDestinationCurrency =
-        totalDollarsOfSourceCurrency * _rates[destinationCurrency];
-    return totalDestinationCurrency;
+    final double totalDollarsOfSourceCurrency =
+        sourceAmount / _rates[sourceCurrency];
+    return totalDollarsOfSourceCurrency * _rates[destinationCurrency];
   }
 
   /// returns a Map containing prices of all currencies with their currency_code as key.
   Future<Map<String, double>> getAllCurrenciesPrices() async {
     await _checkCurrenciesList();
-    Map<String, double> result = <String, double>{};
+    final Map<String, double> result = <String, double>{};
     for (final element in _keys) {
       result[element] = double.parse(_rates[element].toString());
     }

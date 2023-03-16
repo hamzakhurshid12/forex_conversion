@@ -1,3 +1,6 @@
+## 0.3.0
+ - Added default conversion + mini improvements
+
 ## 0.2.0
  - Removed repetitive code and added sample app
 
