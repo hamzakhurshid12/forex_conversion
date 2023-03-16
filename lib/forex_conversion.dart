@@ -5,7 +5,8 @@ import 'dart:convert';
 
 /// A Calculator.
 class Forex {
-  late Map<String, dynamic> _rates;
+  Map<String, dynamic> _rates = {};
+  List<String> _keys = [];
 
   Future<void> _fetchCurrencies() async {
     Uri baseUri = Uri.parse('http://www.convertmymoney.com/rates.json');
@@ -13,18 +14,18 @@ class Forex {
     Map<String, dynamic> jsonResponse =
         json.decode(response.body) as Map<String, dynamic>;
     _rates = jsonResponse.remove("rates") as Map<String, dynamic>;
+    _keys = _rates.keys.toList();
   }
 
   /// converts amount from one currency into another using current forex prices.
   Future<double> getCurrencyConverted(String sourceCurrency,
       String destinationCurrency, double sourceAmount) async {
-    await _fetchCurrencies();
-    List<String> availableCurrencies = await getAvailableCurrencies();
-    if (!availableCurrencies.contains(sourceCurrency)) {
+    await getAvailableCurrencies();
+    if (!_keys.contains(sourceCurrency)) {
       throw Exception(
           "Source Currency provided is invalid. Please Use ISO-4217 currency codes only.");
     }
-    if (!availableCurrencies.contains(destinationCurrency)) {
+    if (!_keys.contains(destinationCurrency)) {
       throw Exception(
           "Destination Currency provided is invalid. Please Use ISO-4217 currency codes only.");
     }
@@ -39,7 +40,7 @@ class Forex {
   Future<Map<String, double>> getAllCurrenciesPrices() async {
     await _fetchCurrencies();
     Map<String, double> result = <String, double>{};
-    for (var element in _rates.keys) {
+    for (final element in _keys) {
       result[element] = double.parse(_rates[element].toString());
     }
     return result;
@@ -47,9 +48,9 @@ class Forex {
 
   /// returns a list of all supported currencies.
   Future<List<String>> getAvailableCurrencies() async {
-    if (_rates == null) {
+    if (_rates.isEmpty) {
       await _fetchCurrencies();
     }
-    return _rates.keys.toList();
+    return _keys;
   }
 }

@@ -11,3 +11,7 @@ Released initial version with features for lisiting all currency prices and conv
 ## 0.0.3
 
  - Reformatted forex_conversion.dart
+
+## 0.1.0
+
+ - Updated dependencies and removed repetitive code
