@@ -1,3 +1,6 @@
+## 0.5.0
+ - Allow the user to initialize the class with a default value for source and destination currencies.
+
 ## 0.4.0
  - Allow the user to update the currencies.
 

@@ -5,8 +5,14 @@ import 'dart:convert';
 
 /// A Calculator.
 class Forex {
+  final String defaultSourceCurrency;
+  final String defaultDestinationCurrency;
   Map<String, dynamic> _rates = {};
   List<String> _keys = [];
+
+  Forex(
+      {this.defaultSourceCurrency = 'USD',
+      this.defaultDestinationCurrency = 'BRL'});
 
   /// function that fetches all avaliable currencies from API.
   Future<void> _fetchCurrencies() async {
@@ -32,23 +38,25 @@ class Forex {
 
   /// converts amount from one currency into another using current forex prices.
   Future<double> getCurrencyConverted({
-    String sourceCurrency = 'USD',
-    String destinationCurrency = 'BRL',
+    String? sourceCurrency,
+    String? destinationCurrency,
     double sourceAmount = 1,
   }) async {
     await _checkCurrenciesList();
-    if (!_keys.contains(sourceCurrency)) {
+    final String localSourceCurrency = sourceCurrency ?? defaultSourceCurrency;
+    final String localDestinationCurrency = destinationCurrency ?? defaultDestinationCurrency;
+    if (!_keys.contains(localSourceCurrency)) {
       throw Exception(
           "Source Currency provided is invalid. Please Use ISO-4217 currency codes only.");
     }
-    if (!_keys.contains(destinationCurrency)) {
+    if (!_keys.contains(localDestinationCurrency)) {
       throw Exception(
           "Destination Currency provided is invalid. Please Use ISO-4217 currency codes only.");
     }
 
     final double totalDollarsOfSourceCurrency =
-        sourceAmount / _rates[sourceCurrency];
-    return totalDollarsOfSourceCurrency * _rates[destinationCurrency];
+        sourceAmount / _rates[localSourceCurrency];
+    return totalDollarsOfSourceCurrency * _rates[localDestinationCurrency];
   }
 
   /// returns a Map containing prices of all currencies with their currency_code as key.

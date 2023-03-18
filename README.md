@@ -40,6 +40,12 @@ For a simple currency conversion, you can use the following method for instant c
   print("252.5 USD in PKR: ${myPriceInPKR}");
 ```
 
+You can initialize the class with default values for source and destination currencies.
+
+```dart
+  final fx = Forex(defaultDestinationCurrency: 'PKR', defaultSourceCurrency: 'EUR');
+```
+
 ## Additional information
 
 This package uses real-time currency rates from a third-party prices provider convertmymoney.com. The forex prices are bound to their terms and conditions.
