@@ -1,14 +1,17 @@
+## 0.4.0
+ - Allow the user to update the currencies.
+
 ## 0.3.0
- - Added default conversion + mini improvements
+ - Added default conversion + mini improvements.
 
 ## 0.2.0
- - Removed repetitive code and added sample app
+ - Removed repetitive code and added sample app.
 
 ## 0.1.0
-- Updated dependencies and removed repetitive code
+- Updated dependencies and removed repetitive code.
 
 ## 0.0.3
- - Reformatted forex_conversion.dart
+ - Reformatted forex_conversion.dart.
 
 ## 0.0.2
  - Fixed installing instructions in Readme.md.

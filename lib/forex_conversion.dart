@@ -8,12 +8,7 @@ class Forex {
   Map<String, dynamic> _rates = {};
   List<String> _keys = [];
 
-  Future<void> _checkCurrenciesList() async {
-    if (_rates.isEmpty) {
-      await _fetchCurrencies();
-    }
-  }
-
+  /// function that fetches all avaliable currencies from API.
   Future<void> _fetchCurrencies() async {
     final Uri baseUri = Uri.parse('http://www.convertmymoney.com/rates.json');
     final response = await http.get(baseUri);
@@ -21,6 +16,18 @@ class Forex {
         json.decode(response.body) as Map<String, dynamic>;
     _rates = jsonResponse.remove("rates") as Map<String, dynamic>;
     _keys = _rates.keys.toList();
+  }
+
+  /// checks if the currencies list is empty. If yes, calls _fetchCurrencies().
+  Future<void> _checkCurrenciesList() async {
+    if (_rates.isEmpty) {
+      await _fetchCurrencies();
+    }
+  }
+
+  /// resets currencies list.
+  Future<void> updatePrices() async {
+    await _fetchCurrencies();
   }
 
   /// converts amount from one currency into another using current forex prices.
