@@ -1,5 +1,8 @@
+## 0.6.0
+ - Allow the user to initialize the class with default maximum value of decimal places for the currencies.
+
 ## 0.5.0
- - Allow the user to initialize the class with a default value for source and destination currencies.
+ - Allow the user to initialize the class with default values for source and destination currencies.
 
 ## 0.4.0
  - Allow the user to update the currencies.

@@ -2,17 +2,21 @@ library forex_conversion;
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '/extensions.dart';
 
 /// A Calculator.
 class Forex {
   final String defaultSourceCurrency;
   final String defaultDestinationCurrency;
+  final int defaultNumberOfDecimals;
   Map<String, dynamic> _rates = {};
   List<String> _keys = [];
 
-  Forex(
-      {this.defaultSourceCurrency = 'USD',
-      this.defaultDestinationCurrency = 'BRL'});
+  Forex({
+    this.defaultSourceCurrency = 'USD',
+    this.defaultDestinationCurrency = 'BRL',
+    this.defaultNumberOfDecimals = 2,
+  });
 
   /// function that fetches all avaliable currencies from API.
   Future<void> _fetchCurrencies() async {
@@ -41,10 +45,12 @@ class Forex {
     String? sourceCurrency,
     String? destinationCurrency,
     double sourceAmount = 1,
+    int? numberOfDecimals,
   }) async {
     await _checkCurrenciesList();
     final String localSourceCurrency = sourceCurrency ?? defaultSourceCurrency;
-    final String localDestinationCurrency = destinationCurrency ?? defaultDestinationCurrency;
+    final String localDestinationCurrency =
+        destinationCurrency ?? defaultDestinationCurrency;
     if (!_keys.contains(localSourceCurrency)) {
       throw Exception(
           "Source Currency provided is invalid. Please Use ISO-4217 currency codes only.");
@@ -56,15 +62,20 @@ class Forex {
 
     final double totalDollarsOfSourceCurrency =
         sourceAmount / _rates[localSourceCurrency];
-    return totalDollarsOfSourceCurrency * _rates[localDestinationCurrency];
+    return (totalDollarsOfSourceCurrency * _rates[localDestinationCurrency])
+        .toPrecision(numberOfDecimals ?? defaultNumberOfDecimals);
   }
 
   /// returns a Map containing prices of all currencies with their currency_code as key.
-  Future<Map<String, double>> getAllCurrenciesPrices() async {
+  Future<Map<String, double>> getAllCurrenciesPrices({
+    int? numberOfDecimals,
+  }) async {
     await _checkCurrenciesList();
     final Map<String, double> result = <String, double>{};
+    final int decimals = numberOfDecimals ?? defaultNumberOfDecimals;
     for (final element in _keys) {
-      result[element] = double.parse(_rates[element].toString());
+      result[element] =
+          double.parse(_rates[element].toString()).toPrecision(decimals);
     }
     return result;
   }
