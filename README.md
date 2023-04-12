@@ -1,4 +1,8 @@
-A Flutter package to quickly fetch Forex prices and perform currency cinversions.
+# forex_currency_conversion
+![Build Status](https://img.shields.io/github/actions/workflow/status/Macacoazul01/forex_currency_conversion/dart.yml)
+[![pub package](https://img.shields.io/pub/v/forex_currency_conversion.svg)](https://pub.dev/packages/forex_currency_conversion)
+
+A Flutter package to quickly fetch Forex prices and perform currency conversions.
 
 ## Features
 
