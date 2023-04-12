@@ -1,7 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages, avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:forex_conversion/forex_conversion.dart';
+import 'package:forex_currency_conversion/forex_currency_conversion.dart';
 
 void main() => runApp(const MyApp());
 

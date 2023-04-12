@@ -1,3 +1,3 @@
-# forex_conversion_example
+# forex_currency_conversion_example
 
-Demonstrates how to use the forex_conversion package.
+Demonstrates how to use the forex_currency_conversion package.

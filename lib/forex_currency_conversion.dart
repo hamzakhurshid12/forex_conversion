@@ -1,4 +1,4 @@
-library forex_conversion;
+library forex_currency_conversion;
 
 import 'package:http/http.dart';
 import 'dart:convert';
