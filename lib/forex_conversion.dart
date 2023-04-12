@@ -1,6 +1,6 @@
 library forex_conversion;
 
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import 'dart:convert';
 import '/extensions.dart';
 
@@ -19,25 +19,31 @@ class Forex {
   });
 
   /// function that fetches all avaliable currencies from API.
-  Future<void> _fetchCurrencies() async {
+  Future<String?> _fetchCurrencies() async {
     final Uri baseUri = Uri.parse('http://www.convertmymoney.com/rates.json');
-    final response = await http.get(baseUri);
-    final Map<String, dynamic> jsonResponse =
-        json.decode(response.body) as Map<String, dynamic>;
-    _rates = jsonResponse.remove("rates") as Map<String, dynamic>;
-    _keys = _rates.keys.toList();
-  }
-
-  /// checks if the currencies list is empty. If yes, calls _fetchCurrencies().
-  Future<void> _checkCurrenciesList() async {
-    if (_rates.isEmpty) {
-      await _fetchCurrencies();
+    try {
+      final Response response = await get(baseUri);
+      final Map<String, dynamic> jsonResponse =
+          json.decode(response.body) as Map<String, dynamic>;
+      _rates = jsonResponse.remove("rates") as Map<String, dynamic>;
+      _keys = _rates.keys.toList();
+      return null;
+    } catch (e) {
+      return e.toString();
     }
   }
 
+  /// checks if the currencies list is empty. If yes, calls _fetchCurrencies().
+  Future<String?> _checkCurrenciesList() async {
+    if (_rates.isEmpty) {
+      return await _fetchCurrencies();
+    }
+    return null;
+  }
+
   /// resets currencies list.
-  Future<void> updatePrices() async {
-    await _fetchCurrencies();
+  Future<String?> updatePrices() async {
+    return await _fetchCurrencies();
   }
 
   /// converts amount from one currency into another using current forex prices.
@@ -47,7 +53,10 @@ class Forex {
     double sourceAmount = 1,
     int? numberOfDecimals,
   }) async {
-    await _checkCurrenciesList();
+    final String? result = await _checkCurrenciesList();
+    if (result != null) {
+      return 0;
+    }
     final String localSourceCurrency = sourceCurrency ?? defaultSourceCurrency;
     final String localDestinationCurrency =
         destinationCurrency ?? defaultDestinationCurrency;

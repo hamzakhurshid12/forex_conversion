@@ -1,3 +1,6 @@
+## 0.6.5
+ - Partial error handling to stop cors related problems on web.
+
 ## 0.6.0
  - Allow the user to initialize the class with default maximum value of decimal places for the currencies.
 
