@@ -1,3 +1,6 @@
+## 0.6.5+1
+ - Readme update.
+
 ## 0.6.5
  - Partial error handling to stop cors related problems on web.
  - Package rename.
