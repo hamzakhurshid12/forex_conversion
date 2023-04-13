@@ -1,6 +1,6 @@
 name: forex_conversion_example
 description: Demonstrates how to use the forex_conversion plugin.
-publish_to: 'none'
+
 
 environment:
   sdk: '>=2.19.2 <3.0.0'
