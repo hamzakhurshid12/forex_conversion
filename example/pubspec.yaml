@@ -1,0 +1,22 @@
+name: forex_conversion_example
+description: Demonstrates how to use the forex_conversion plugin.
+publish_to: 'none'
+
+environment:
+  sdk: '>=2.19.2 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.1
+
+  forex_conversion:
+    path: ../
+
+flutter:
+  uses-material-design: true

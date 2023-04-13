@@ -1,4 +1,4 @@
-A Flutter package to quickly fetch Forex prices and perform currency cinversions.
+A Flutter package to quickly fetch Forex prices and perform currency conversions.
 
 ## Features
 
@@ -12,7 +12,6 @@ import 'package:forex_conversion/forex_conversion.dart';
 ```
 
 ## Usage
-
 
 If you want the latest prices of all currencies with respect to price of USD, you can do it with minimal hassle.
 
@@ -40,6 +39,12 @@ For a simple currency conversion, you can use the following method for instant c
   print("252.5 USD in PKR: ${myPriceInPKR}");
 ```
 
+You can initialize the class with default values for source and destination currencies. Also for the number of decimal places.
+
+```dart
+  final fx = Forex(defaultDestinationCurrency: 'PKR', defaultSourceCurrency: 'EUR', defaultNumberOfDecimals: 1);
+```
+
 ## Additional information
 
-This package uses real-time currency rates from a third-party prices provider convertmymoney.com. The forex prices are bound to their terms and conditions.
+This package uses real-time currency rates from a third-party prices provider convertmymoney.com. The forex prices data is bound to their terms and conditions.
