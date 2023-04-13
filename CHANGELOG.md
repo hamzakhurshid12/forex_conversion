@@ -1,20 +1,20 @@
-## 0.6.5+1
+## 0.2.5+1
  - Readme update.
 
-## 0.6.5
+## 0.2.5
  - Partial error handling to stop cors related problems on web.
  - Package rename.
 
-## 0.6.0
+## 0.2.4
  - Allow the user to initialize the class with default maximum value of decimal places for the currencies.
 
-## 0.5.0
+## 0.2.3
  - Allow the user to initialize the class with default values for source and destination currencies.
 
-## 0.4.0
+## 0.2.2
  - Allow the user to update the currencies.
 
-## 0.3.0
+## 0.2.1
  - Added default conversion + mini improvements.
 
 ## 0.2.0

@@ -1,8 +1,8 @@
-library forex_currency_conversion;
+library forex_conversion;
 
 import 'package:http/http.dart';
 import 'dart:convert';
-import '/extensions.dart';
+import 'extensions.dart';
 
 /// A Calculator.
 class Forex {
@@ -18,7 +18,7 @@ class Forex {
     this.defaultNumberOfDecimals = 2,
   });
 
-  /// function that fetches all avaliable currencies from API.
+  /// function that fetches all available currencies from API.
   Future<String?> _fetchCurrencies() async {
     final Uri baseUri = Uri.parse('http://www.convertmymoney.com/rates.json');
     try {

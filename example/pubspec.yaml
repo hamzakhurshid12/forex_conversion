@@ -1,5 +1,5 @@
-name: forex_currency_conversion_example
-description: Demonstrates how to use the forex_currency_conversion plugin.
+name: forex_conversion_example
+description: Demonstrates how to use the forex_conversion plugin.
 publish_to: 'none'
 
 environment:
@@ -15,7 +15,7 @@ dev_dependencies:
 
   flutter_lints: ^2.0.1
 
-  forex_currency_conversion:
+  forex_conversion:
     path: ../
 
 flutter:

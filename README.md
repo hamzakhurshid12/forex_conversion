@@ -1,7 +1,3 @@
-# forex_currency_conversion
-![Build Status](https://img.shields.io/github/actions/workflow/status/Macacoazul01/forex_currency_conversion/dart.yml)
-[![pub package](https://img.shields.io/pub/v/forex_currency_conversion.svg)](https://pub.dev/packages/forex_currency_conversion)
-
 A Flutter package to quickly fetch Forex prices and perform currency conversions.
 
 ## Features
@@ -12,11 +8,10 @@ A Flutter package to quickly fetch Forex prices and perform currency conversions
 ## Getting started
 
 ```dart
-import 'package:forex_currency_conversion/forex_currency_conversion.dart';
+import 'package:forex_conversion/forex_conversion.dart';
 ```
 
 ## Usage
-
 
 If you want the latest prices of all currencies with respect to price of USD, you can do it with minimal hassle.
 
@@ -52,4 +47,4 @@ You can initialize the class with default values for source and destination curr
 
 ## Additional information
 
-This package uses real-time currency rates from a third-party prices provider convertmymoney.com. The forex prices are bound to their terms and conditions.
+This package uses real-time currency rates from a third-party prices provider convertmymoney.com. The forex prices data is bound to their terms and conditions.
